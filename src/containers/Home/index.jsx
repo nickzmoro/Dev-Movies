@@ -1,4 +1,5 @@
 import api from "../../services/api"
+import { Background } from './styles.js'
 
 export function Home() {
 
@@ -11,9 +12,9 @@ export function Home() {
     getMovies()
 
     return (
-        <div>
-            <h1>Home</h1>
-            <p>Essa é a home</p>
-        </div>
+        <Background img='https://image.tmdb.org/t/p/original/jr8tSoJGj33XLgFBy6lmZhpGQNu.jpg'>
+            <div>
+            </div>
+        </Background>
     )
 }
