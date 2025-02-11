@@ -11,9 +11,10 @@ export const HeaderBox = styled.header`
     padding: 0 100px;
     justify-content: space-between;
 
-    & h1 {
+    & h2 {
         text-transform: uppercase;
         font-weight: 900;
+        font-size: 2rem;
 
         span {
             color: red;

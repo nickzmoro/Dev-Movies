@@ -22,3 +22,91 @@ export const Background = styled.div`
 `
 
 // https://image.tmdb.org/t/p/original/jr8tSoJGj33XLgFBy6lmZhpGQNu.jpg
+export const Poster = styled.div`
+    background-image: url(${props => props.posterImg});
+    width: 15vw;
+    height: 40vh;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+`
+
+export const HomeContent = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+    z-index: 1;
+
+    .home-int {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    h2 {
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #FF0000;
+        background-color: rgba(0, 0, 0, 0.8);
+        width: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 0;
+        border-radius: 50px;
+
+        &:before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #FF0000;
+            box-shadow: 0px 0px 10px #FF0000;
+        }
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        margin: 10px 0;
+    }
+    
+    p {
+        max-width: 500px;
+    }
+
+    .btn-home {
+        display: flex;
+        gap: 10px;
+        border-top: 1px solid rgba(256, 256, 256, 0.5);
+        padding-top: 10px;
+
+        button {
+            padding: 8px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #FF0000;
+            border: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.2s ease;
+
+            &:hover {
+                box-shadow: 0px 10px 50px rgba(255, 0, 0, 0.5);
+            }
+        }
+
+        & button:nth-last-child(1) {
+            background-color: transparent;
+            border: 2px solid #fff;
+
+            &:hover {
+                border-color: #FF0000;
+                color: #FF0000;
+                box-shadow: none;
+            }
+        }
+    }
+`
