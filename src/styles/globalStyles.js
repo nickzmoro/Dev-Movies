@@ -13,5 +13,11 @@ export default createGlobalStyle`
 
     body {
         background-color: rgb(20, 21, 23);
+        overflow-x: hidden;
+    }
+
+    ::selection {
+        background-color: rgba(256, 0, 0, 0.5);
+        color: #fff;
     }
 `

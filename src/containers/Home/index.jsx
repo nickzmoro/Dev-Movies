@@ -1,5 +1,6 @@
+import Button from "../../components/Button/index.jsx"
 import api from "../../services/api"
-import { Background, Poster, HomeContent } from './styles.js'
+import { Background, Poster, HomeContent, ContainerButtons } from './styles.js'
 
 import { useState, useEffect } from 'react'
 
@@ -32,10 +33,10 @@ export function Home() {
                                 <h1>{movie.title}</h1>
                                 <p>{movie.overview}</p>
                             </div>
-                            <div className="btn-home">
-                                <button>Assista agora</button>
-                                <button>Assista o Trailer</button>
-                            </div>
+                            <ContainerButtons>
+                                <Button red>Assista agora</Button>
+                                <Button>Assista o Trailer</Button>
+                            </ContainerButtons>
                         </div>
                         <Poster posterImg={`https://image.tmdb.org/t/p/original${movie.poster_path}`}></Poster>
                     </HomeContent>

@@ -49,7 +49,8 @@ export const HomeContent = styled.div`
         font-size: 1rem;
         font-weight: 500;
         color: #FF0000;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
         width: 250px;
         display: flex;
         justify-content: center;
@@ -76,37 +77,11 @@ export const HomeContent = styled.div`
     p {
         max-width: 500px;
     }
+`
 
-    .btn-home {
-        display: flex;
-        gap: 10px;
-        border-top: 1px solid rgba(256, 256, 256, 0.5);
-        padding-top: 10px;
-
-        button {
-            padding: 8px 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            background-color: #FF0000;
-            border: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.2s ease;
-
-            &:hover {
-                box-shadow: 0px 10px 50px rgba(255, 0, 0, 0.5);
-            }
-        }
-
-        & button:nth-last-child(1) {
-            background-color: transparent;
-            border: 2px solid #fff;
-
-            &:hover {
-                border-color: #FF0000;
-                color: #FF0000;
-                box-shadow: none;
-            }
-        }
-    }
+export const ContainerButtons = styled.div`
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid rgba(256, 256, 256, 0.5);
+    padding-top: 10px;
 `
