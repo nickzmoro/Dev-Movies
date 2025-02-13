@@ -20,4 +20,14 @@ export default createGlobalStyle`
         background-color: rgba(256, 0, 0, 0.5);
         color: #fff;
     }
+
+    ::-webkit-scrollbar {
+        background-color: rgba(0, 0, 0, 0);
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(256, 0, 0, 0.5);
+        border-radius: 50px;
+    }
 `

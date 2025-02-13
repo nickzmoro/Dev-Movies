@@ -2,6 +2,7 @@ import Button from "../../components/Button/index.jsx"
 import api from "../../services/api"
 import { Background, Poster, HomeContent, ContainerButtons } from './styles.js'
 import { Slider } from '../../components/Slider/index.jsx'
+import { getImages } from '../../utils/getImages.js'
 
 import { useState, useEffect } from 'react'
 
@@ -35,7 +36,7 @@ export function Home() {
     return (
         <>
             {movie && (
-                <Background img={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}>
+                <Background img={getImages(movie.backdrop_path)}>
                     <HomeContent>
                         <div className="home-int">
                             <div>
@@ -48,14 +49,12 @@ export function Home() {
                                 <Button>Assista o Trailer</Button>
                             </ContainerButtons>
                         </div>
-                        <Poster posterImg={`https://image.tmdb.org/t/p/original${movie.poster_path}`}></Poster>
+                        <Poster posterImg={getImages(movie.poster_path)}></Poster>
                     </HomeContent>
                 </Background >
             )}
 
-            { topMovies && (
-                <Slider info={topMovies} title={'Top Filmes'}></Slider>
-            )}
+            { topMovies && <Slider info={topMovies} title={'Top Filmes'}></Slider> }
         </>
     )
 }
