@@ -34,6 +34,7 @@ export const Poster = styled.div`
 export const HomeContent = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 100px;
     z-index: 1;
 
@@ -41,6 +42,7 @@ export const HomeContent = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        gap: 10px;
     }
 
     h2 {
