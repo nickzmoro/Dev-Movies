@@ -10,6 +10,8 @@ export function Home() {
 
     const [movie, setMovie] = useState()
     const [topMovies, setTopMovies] = useState()
+    const [topSeries, setTopSeries] = useState()
+    const [personPopular, setPersonPopular] = useState()
 
     // useEffect -> efeito colateral
     useEffect(() => {
@@ -28,8 +30,24 @@ export function Home() {
             console.log(results)
         }
 
+        async function getTopSeries() { // top filmes
+            const { data: { results } } = await api.get('/tv/top_rated')
+
+            setTopSeries(results)
+            console.log(results)
+        }
+
+        async function getPersonPopular() { // top filmes
+            const { data: { results } } = await api.get('/person/popular')
+
+            setPersonPopular(results)
+            console.log(results)
+        }
+
         getMovies()
         getTopMovies()
+        getTopSeries()
+        getPersonPopular()
 
     }, [])
 
@@ -55,6 +73,10 @@ export function Home() {
             )}
 
             { topMovies && <Slider info={topMovies} title={'Top Filmes'}></Slider> }
+
+            { topSeries && <Slider info={topSeries} title={'Top Séries'}></Slider>}
+
+            { personPopular && <Slider info={personPopular} title={'Artistas Populares'}></Slider>}
         </>
     )
 }

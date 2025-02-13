@@ -12,7 +12,7 @@ export default createGlobalStyle`
     }
 
     body {
-        background-color: rgb(20, 21, 23);
+        background-color: #000;
         overflow-x: hidden;
     }
 

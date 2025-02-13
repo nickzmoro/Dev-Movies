@@ -1,5 +1,6 @@
 import { Container } from './style'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Card } from '../Card';
 
 export function Slider({ info, title }) {
     return (
@@ -15,7 +16,7 @@ export function Slider({ info, title }) {
 
                 {info.map((item, index) => (
                     <SwiperSlide key={index}>
-                        <div>{item.original_title}</div>
+                        <Card item={item}></Card>
                     </SwiperSlide>
                 ))}
 
