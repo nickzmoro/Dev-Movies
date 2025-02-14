@@ -10,7 +10,7 @@ export function Header() {
     const [ changeBackground, setChangeBackground ] = useState(false)
 
     window.onscroll = () => {
-        if(window.scrollY > 150) {
+        if(window.scrollY > 80) {
             setChangeBackground(true)
         } else {
             setChangeBackground(false)

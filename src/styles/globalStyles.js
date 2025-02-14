@@ -12,6 +12,10 @@ export default createGlobalStyle`
         list-style: none;
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
         background-color: #000;
         overflow-x: hidden;
