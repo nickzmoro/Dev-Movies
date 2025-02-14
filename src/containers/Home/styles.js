@@ -29,6 +29,21 @@ export const Poster = styled.div`
     background-size: cover;
     background-position: center;
     border-radius: 10px;
+    position: relative;
+
+    &:after {
+        content: ' ';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background-color: transparent;
+        border: 1px solid rgba(256, 256, 256, 0.5);
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        z-index: -1;
+    }
 `
 
 export const HomeContent = styled.div`
