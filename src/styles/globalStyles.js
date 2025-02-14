@@ -9,6 +9,7 @@ export default createGlobalStyle`
         text-decoration: none;
         font-family: "Inter", sans-serif;
         color: #fff;
+        list-style: none;
     }
 
     body {
