@@ -1,15 +1,16 @@
-import { ButtonRed, ButtonWhite } from "./styles"
+import { ButtonRed, ButtonWhite } from "./styles";
 
-function Button({ children, red }) {
-    return (
-        <>
-            {red ? (
-                <ButtonRed>{children}</ButtonRed>
-            ) : (
-                <ButtonWhite>{children}</ButtonWhite>
-            )}
-        </>
-    )
+// eslint-disable-next-line react/prop-types
+function Button({ children, red, ...rest }) {
+  return (
+    <>
+      {red ? (
+        <ButtonRed {...rest}>{children}</ButtonRed>
+      ) : (
+        <ButtonWhite {...rest}>{children}</ButtonWhite>
+      )}
+    </>
+  );
 }
 
-export default Button
+export default Button;
