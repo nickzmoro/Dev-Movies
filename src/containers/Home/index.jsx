@@ -1,5 +1,4 @@
 import Button from "../../components/Button/index.jsx";
-import api from "../../services/api";
 import { Background, Poster, HomeContent, ContainerButtons } from "./styles.js";
 import { Slider } from "../../components/Slider/index.jsx";
 import { getImages } from "../../utils/getImages.js";
@@ -7,6 +6,13 @@ import Modal from "../../components/Modal/index.jsx";
 import { useNavigate } from "react-router-dom";
 
 import { useState, useEffect } from "react";
+
+import {
+  getMovies,
+  getPopularPerson,
+  getTopMovies,
+  getTopSeries,
+} from "../../services/getData.js";
 
 export function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -18,50 +24,14 @@ export function Home() {
 
   // useEffect -> efeito colateral
   useEffect(() => {
-    async function getMovies() {
-      // filme popular
-      const {
-        data: { results },
-      } = await api.get("/movie/popular");
-
-      setMovie(results[1]);
-      console.log(results[1]);
+    async function getAllData() {
+      setMovie(await getMovies());
+      setTopMovies(await getTopMovies());
+      setTopSeries(await getTopSeries());
+      setPersonPopular(await getPopularPerson());
     }
 
-    async function getTopMovies() {
-      // top filmes
-      const {
-        data: { results },
-      } = await api.get("/movie/top_rated");
-
-      setTopMovies(results);
-      console.log(results);
-    }
-
-    async function getTopSeries() {
-      // top filmes
-      const {
-        data: { results },
-      } = await api.get("/tv/top_rated");
-
-      setTopSeries(results);
-      console.log(results);
-    }
-
-    async function getPersonPopular() {
-      // top filmes
-      const {
-        data: { results },
-      } = await api.get("/person/popular");
-
-      setPersonPopular(results);
-      console.log(results);
-    }
-
-    getMovies();
-    getTopMovies();
-    getTopSeries();
-    getPersonPopular();
+    getAllData();
   }, []);
 
   return (

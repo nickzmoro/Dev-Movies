@@ -1,4 +1,4 @@
-import api from "../../services/api.js";
+import { getMovie } from "../../services/getData.js";
 import { Container, Background } from "./styles.js";
 import { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
@@ -9,13 +9,7 @@ const Modal = ({ movieId, setShowModal }) => {
 
   useEffect(() => {
     async function getMovies() {
-      // filme popular
-      const {
-        data: { results },
-      } = await api.get(`/movie/${movieId}/videos`);
-
-      setMovie(results[0]);
-      console.log(results[0]);
+      setMovie(await getMovie(movieId));
     }
 
     getMovies();
