@@ -4,6 +4,7 @@ import { Background, Poster, HomeContent, ContainerButtons } from "./styles.js";
 import { Slider } from "../../components/Slider/index.jsx";
 import { getImages } from "../../utils/getImages.js";
 import Modal from "../../components/Modal/index.jsx";
+import { useNavigate } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 
@@ -13,6 +14,7 @@ export function Home() {
   const [topMovies, setTopMovies] = useState();
   const [topSeries, setTopSeries] = useState();
   const [personPopular, setPersonPopular] = useState();
+  const navigate = useNavigate();
 
   // useEffect -> efeito colateral
   useEffect(() => {
@@ -77,7 +79,9 @@ export function Home() {
                 <p>{movie.overview}</p>
               </div>
               <ContainerButtons>
-                <Button red>Assista agora</Button>
+                <Button red onClick={() => navigate(`/detalhe/${movie.id}`)}>
+                  Assista agora
+                </Button>
                 <Button onClick={() => setShowModal(true)}>
                   Assista o Trailer
                 </Button>
