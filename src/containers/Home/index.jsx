@@ -24,14 +24,19 @@ export function Home() {
 
   // useEffect -> efeito colateral
   useEffect(() => {
-    async function getAllData() {
-      setMovie(await getMovies());
-      setTopMovies(await getTopMovies());
-      setTopSeries(await getTopSeries());
-      setPersonPopular(await getPopularPerson());
-    }
-
-    getAllData();
+    Promise.all([
+      getMovies(),
+      getTopMovies(),
+      getTopSeries(),
+      getPopularPerson(),
+    ])
+      .then(([movie, topMovies, topSeries, personPopular]) => [
+        setMovie(movie),
+        setTopMovies(topMovies),
+        setTopSeries(topSeries),
+        setPersonPopular(personPopular),
+      ])
+      .catch((error) => console.error(error));
   }, []);
 
   return (

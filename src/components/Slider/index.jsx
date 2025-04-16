@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Container } from "./style";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Card } from "../Card";
