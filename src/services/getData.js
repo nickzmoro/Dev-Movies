@@ -36,11 +36,32 @@ export async function getPopularPerson() {
   return results;
 }
 
-export async function getMovie(movieId) {
+export async function getMovieVideos(movieId) {
   // filme popular
   const {
     data: { results },
   } = await api.get(`/movie/${movieId}/videos`);
 
-  return results[0];
+  return results;
+}
+
+export async function getMovieCredits(movieId) {
+  // créditos do filme
+  const { data } = await api.get(`/movie/${movieId}/credits`);
+
+  return data;
+}
+
+export async function getMovieSimilar(movieId) {
+  const {
+    data: { results },
+  } = await api.get(`/movie/${movieId}/similar`);
+
+  return results;
+}
+
+export async function getMovieById(movieId) {
+  const { data } = await api.get(`/movie/${movieId}`);
+
+  return data;
 }
