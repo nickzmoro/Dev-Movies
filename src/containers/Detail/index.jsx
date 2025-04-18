@@ -9,6 +9,11 @@ import {
 } from "../../services/getData";
 import { getImages } from "../../utils/getImages";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+
 export function Detail() {
   const { id } = useParams();
   const [movie, setMovie] = useState();
@@ -43,26 +48,41 @@ export function Detail() {
               <img src={getImages(movie.poster_path)}></img>
             </Cover>
             <Info>
-              <h2>{movie.title}</h2>
-              <div>
-                {movie.genres.map((item) => (
-                  <div key={item.id}>
-                    <p>{item.name}</p>
-                  </div>
-                ))}
-              </div>
-              <div>
-                <p>{movie.overview}</p>
-              </div>
-              <div>
-                <h3>Créditos</h3>
-                <div>
-                  {movieCredits.cast.map((item) => (
-                    <div key={item.id}>
-                      <img src={getImages(item.profile_path)} alt={item.name} />
+              <div className="info-txt">
+                <h2>{movie.title}</h2>
+                <div className="genres-container">
+                  {movie.genres.map((item) => (
+                    <div key={item.id} className="genre-box">
                       <p>{item.name}</p>
                     </div>
                   ))}
+                </div>
+                <div className="movie-overview">
+                  <p>{movie.overview}</p>
+                </div>
+              </div>
+              <div className="credits">
+                <h3>Créditos</h3>
+                <div className="card-container">
+                  <Swiper
+                    slidesPerView={4}
+                    spaceBetween={0}
+                    pagination={{
+                      clickable: true,
+                    }}
+                    modules={[Pagination]}
+                    className="mySwiper"
+                  >
+                    {movieCredits.cast.map((item) => (
+                      <SwiperSlide key={item.id} className="swiper-slide">
+                        <img
+                          src={getImages(item.profile_path)}
+                          alt={item.name}
+                        />
+                        <p>{item.name}</p>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
                 </div>
               </div>
             </Info>

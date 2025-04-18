@@ -11,7 +11,7 @@ export function Slider({ info, title }) {
       <Swiper
         grabCursor={true}
         spaceBetween={10}
-        slidesPerView={"auto"}
+        slidesPerView={5}
         className="swiper"
       >
         {info.map((item, index) => (
