@@ -9,12 +9,12 @@ const Modal = ({ movieId, setShowModal }) => {
 
   useEffect(() => {
     async function getMovies() {
-      setMovie(await getMovieVideos(movieId));
+      const videos = await getMovieVideos(movieId);
+      setMovie(videos[0]);
     }
 
     getMovies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [movieId]);
 
   return (
     <Background onClick={() => setShowModal(false)}>
@@ -30,6 +30,7 @@ const Modal = ({ movieId, setShowModal }) => {
             title="Youtube Video Player"
             height={500}
             width="100%"
+            allowFullScreen
           ></iframe>
         </Container>
       )}
