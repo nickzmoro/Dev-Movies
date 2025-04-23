@@ -67,12 +67,28 @@ export function Home() {
         </Background>
       )}
 
-      {topMovies && <Slider info={topMovies} title={"Top Filmes"}></Slider>}
+      {topMovies && (
+        <Slider
+          info={topMovies}
+          title={"Top Filmes"}
+          slidesPerView={5}
+        ></Slider>
+      )}
 
-      {topSeries && <Slider info={topSeries} title={"Top Séries"}></Slider>}
+      {topSeries && (
+        <Slider
+          info={topSeries}
+          title={"Top Séries"}
+          slidesPerView={5}
+        ></Slider>
+      )}
 
       {personPopular && (
-        <Slider info={personPopular} title={"Artistas Populares"}></Slider>
+        <Slider
+          info={personPopular}
+          title={"Artistas Populares"}
+          slidesPerView={5}
+        ></Slider>
       )}
     </>
   );
