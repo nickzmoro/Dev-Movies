@@ -38,7 +38,7 @@ export function Detail() {
         setMovieSimilar(similar),
       ])
       .catch((error) => console.error(error));
-  }, []);
+  }, [id]);
 
   return (
     <>
