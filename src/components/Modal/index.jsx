@@ -1,4 +1,5 @@
 import { getMovieVideos } from "../../services/getData.js";
+import { getVideos } from "../../utils/getVideos.js";
 import { Container, Background } from "./styles.js";
 import { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
@@ -26,7 +27,7 @@ const Modal = ({ movieId, setShowModal }) => {
       {movie && (
         <Container>
           <iframe
-            src={`https://youtube.com/embed/${movie.key}`}
+            src={getVideos(movie.key)}
             title="Youtube Video Player"
             height={500}
             width="100%"
