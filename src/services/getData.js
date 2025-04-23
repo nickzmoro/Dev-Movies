@@ -65,3 +65,11 @@ export async function getMovieById(movieId) {
 
   return data;
 }
+
+export async function getSeriePopular() {
+  const {
+    data: { results },
+  } = await api.get("/tv/popular");
+
+  return results[0];
+}
