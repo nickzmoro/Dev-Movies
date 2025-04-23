@@ -114,3 +114,37 @@ export const Info = styled.div`
     }
   }
 `;
+
+export const ContainerMovies = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 0;
+  padding: 0 200px;
+
+  .video-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+
+    h4 {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    iframe {
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 0 5px #ff0000;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        box-shadow: 0 0 15px #ff0000;
+      }
+    }
+  }
+`;

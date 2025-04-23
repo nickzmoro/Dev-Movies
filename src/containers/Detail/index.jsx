@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Background, Cover, Info } from "./styles";
+import { Container, Background, Cover, Info, ContainerMovies } from "./styles";
 import {
   getMovieById,
   getMovieCredits,
@@ -13,6 +13,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { getVideos } from "../../utils/getVideos";
+import { Slider } from "../../components/Slider";
 
 export function Detail() {
   const { id } = useParams();
@@ -87,6 +89,28 @@ export function Detail() {
               </div>
             </Info>
           </Container>
+          <ContainerMovies>
+            {movieVideos &&
+              movieVideos.map((movie) => (
+                <div key={movie.id} className="video-container">
+                  <h4>{movie.name}</h4>
+                  <iframe
+                    src={getVideos(movie.key)}
+                    title="Youtube Video Player"
+                    height={500}
+                    width={750}
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              ))}
+          </ContainerMovies>
+          {movieSimilar && (
+            <Slider
+              info={movieSimilar}
+              title={"Filmes similares"}
+              slidesPerView={5}
+            ></Slider>
+          )}
         </>
       )}
     </>
