@@ -15,6 +15,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { getVideos } from "../../utils/getVideos";
 import { Slider } from "../../components/Slider";
+import LoadingPage from "../../components/LoadingPage";
 
 export function Detail() {
   const { id } = useParams();
@@ -41,7 +42,7 @@ export function Detail() {
 
   return (
     <>
-      {movie && (
+      {movie ? (
         <>
           <Background image={getImages(movie.backdrop_path)} />
           <Container>
@@ -111,6 +112,8 @@ export function Detail() {
             ></Slider>
           )}
         </>
+      ) : (
+        <LoadingPage />
       )}
     </>
   );
