@@ -1,25 +1,38 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { getSeriePopular } from "../../services/getData";
-import { getImages } from "../../utils/getImages";
+import LoadingPage from "../../components/LoadingPage";
+import PopularPage from "../../components/PopularPage";
 
 export function Serie() {
   const [seriePopular, setSeriePopular] = useState();
 
   useEffect(() => {
-    Promise.all([getSeriePopular()])
-      .then(([seriePopular]) => [setSeriePopular(seriePopular)])
-      .catch((error) => console.error(error));
+    setTimeout(() => {
+      Promise.all([getSeriePopular()])
+        .then(([seriePopular]) => [setSeriePopular(seriePopular)])
+        .catch((error) => console.error(error));
+    }, 250);
   }, []);
 
   console.log(seriePopular);
 
   return (
-    <div>
-      <h2>Série mais popular</h2>
-      <p>com + de {seriePopular.popularity.toFixed(3)} fãs</p>
-      <h4>{seriePopular.name}</h4>
-      <img src={getImages("/qujVFLAlBnPU9mZElV4NZgL8iXT.jpg")} alt="" />
-    </div>
+    <>
+      {seriePopular ? (
+        <PopularPage
+          titlePage={"Série mais popular"}
+          bgSrc={seriePopular.backdrop_path}
+          popularity={seriePopular.popularity}
+          name={seriePopular.name}
+          overview={seriePopular.overview}
+          age={seriePopular.adult}
+          releaseDate={seriePopular.first_air_date}
+          imgPoster={seriePopular.poster_path}
+        />
+      ) : (
+        <LoadingPage />
+      )}
+    </>
   );
 }

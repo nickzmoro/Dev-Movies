@@ -1,31 +1,37 @@
 import { useEffect, useState } from "react";
 import { getMovies } from "../../services/getData";
-import { getImages } from "../../utils/getImages";
+import LoadingPage from "../../components/LoadingPage";
+import PopularPage from "../../components/PopularPage";
 
 export function Movie() {
   const [moviePopular, setMoviePopular] = useState();
 
   useEffect(() => {
-    Promise.all([getMovies()])
-      .then(([moviePopular]) => [setMoviePopular(moviePopular)])
-      .catch((error) => console.error(error));
+    setTimeout(() => {
+      Promise.all([getMovies()])
+        .then(([moviePopular]) => [setMoviePopular(moviePopular)])
+        .catch((error) => console.error(error));
+    }, 250);
   }, []);
 
   console.log(moviePopular);
 
   return (
-    <div>
-      <h2>Filme mais popular</h2>
-      <p>com + de {moviePopular.popularity} fãs</p>
-      <h4>{moviePopular.title}</h4>
-      <p>{moviePopular.overview}</p>
-      <span>
-        {moviePopular.adult
-          ? "Para maiores de 18 anos."
-          : "Permitido para menores de idade."}
-      </span>
-      <p>Data de lançamento: {moviePopular.release_date}</p>
-      <img src={getImages("/iT6yYCAuMQwm1PV4nByrsrsIOhG.jpg")} alt="" />
-    </div>
+    <>
+      {moviePopular ? (
+        <PopularPage
+          titlePage={"Filme mais popular"}
+          bgSrc={moviePopular.backdrop_path}
+          popularity={moviePopular.popularity}
+          name={moviePopular.title}
+          overview={moviePopular.overview}
+          age={moviePopular.adult}
+          releaseDate={moviePopular.release_date}
+          imgPoster={moviePopular.poster_path}
+        />
+      ) : (
+        <LoadingPage />
+      )}
+    </>
   );
 }
