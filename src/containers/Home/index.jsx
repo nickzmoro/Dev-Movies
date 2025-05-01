@@ -4,6 +4,7 @@ import { Slider } from "../../components/Slider/index.jsx";
 import { getImages } from "../../utils/getImages.js";
 import Modal from "../../components/Modal/index.jsx";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../components/LoadingPage";
 
 import { useState, useEffect } from "react";
 
@@ -41,54 +42,58 @@ export function Home() {
 
   return (
     <>
-      {movie && (
-        <Background img={getImages(movie.backdrop_path)}>
-          {showModal && (
-            <Modal movieId={movie.id} setShowModal={setShowModal} />
-          )}
-          <HomeContent>
-            <div className="home-int">
-              <div>
-                <h2>Filme popular</h2>
-                <h1>{movie.title}</h1>
-                <p>{movie.overview}</p>
+      {movie ? (
+        <>
+          <Background img={getImages(movie.backdrop_path)}>
+            {showModal && (
+              <Modal movieId={movie.id} setShowModal={setShowModal} />
+            )}
+            <HomeContent>
+              <div className="home-int">
+                <div>
+                  <h2>Filme popular</h2>
+                  <h1>{movie.title}</h1>
+                  <p>{movie.overview}</p>
+                </div>
+                <ContainerButtons>
+                  <Button red onClick={() => navigate(`/detalhe/${movie.id}`)}>
+                    Assista agora
+                  </Button>
+                  <Button onClick={() => setShowModal(true)}>
+                    Assista o Trailer
+                  </Button>
+                </ContainerButtons>
               </div>
-              <ContainerButtons>
-                <Button red onClick={() => navigate(`/detalhe/${movie.id}`)}>
-                  Assista agora
-                </Button>
-                <Button onClick={() => setShowModal(true)}>
-                  Assista o Trailer
-                </Button>
-              </ContainerButtons>
-            </div>
-            <Poster posterImg={getImages(movie.poster_path)}></Poster>
-          </HomeContent>
-        </Background>
-      )}
+              <Poster posterImg={getImages(movie.poster_path)}></Poster>
+            </HomeContent>
+          </Background>
 
-      {topMovies && (
-        <Slider
-          info={topMovies}
-          title={"Top Filmes"}
-          slidesPerView={5}
-        ></Slider>
-      )}
+          {topMovies && (
+            <Slider
+              info={topMovies}
+              title={"Top Filmes"}
+              slidesPerView={5}
+            ></Slider>
+          )}
 
-      {topSeries && (
-        <Slider
-          info={topSeries}
-          title={"Top Séries"}
-          slidesPerView={5}
-        ></Slider>
-      )}
+          {topSeries && (
+            <Slider
+              info={topSeries}
+              title={"Top Séries"}
+              slidesPerView={5}
+            ></Slider>
+          )}
 
-      {personPopular && (
-        <Slider
-          info={personPopular}
-          title={"Artistas Populares"}
-          slidesPerView={5}
-        ></Slider>
+          {personPopular && (
+            <Slider
+              info={personPopular}
+              title={"Artistas Populares"}
+              slidesPerView={5}
+            ></Slider>
+          )}
+        </>
+      ) : (
+        <Loading />
       )}
     </>
   );
