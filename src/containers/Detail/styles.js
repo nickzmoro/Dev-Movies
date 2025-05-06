@@ -38,6 +38,14 @@ export const Cover = styled.div`
   img {
     width: 425px;
     border-radius: 12px;
+
+    @media (max-width: 1536px) {
+      width: 300px;
+    }
+
+    @media (max-width: 1280px) {
+      display: none;
+    }
   }
 `;
 
