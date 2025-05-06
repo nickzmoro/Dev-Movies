@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Background, Cover, Info, ContainerMovies } from "./styles";
+import { Container, Background, Info, ContainerMovies } from "./styles";
 import {
   getMovieById,
   getMovieCredits,
@@ -46,9 +46,6 @@ export function Detail() {
         <>
           <Background image={getImages(movie.backdrop_path)} />
           <Container>
-            <Cover>
-              <img src={getImages(movie.poster_path)}></img>
-            </Cover>
             <Info>
               <div className="info-txt">
                 <h2>{movie.title}</h2>
@@ -65,27 +62,37 @@ export function Detail() {
               </div>
               <div className="credits">
                 <h3>Créditos</h3>
-                <div className="card-container">
-                  <Swiper
-                    slidesPerView={4}
-                    spaceBetween={0}
-                    pagination={{
-                      clickable: true,
-                    }}
-                    modules={[Pagination]}
-                    className="mySwiper"
-                  >
-                    {movieCredits.cast.map((item) => (
-                      <SwiperSlide key={item.id} className="swiper-slide">
-                        <img
-                          src={getImages(item.profile_path)}
-                          alt={item.name}
-                        />
-                        <p>{item.name}</p>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </div>
+                <Swiper
+                  spaceBetween={10}
+                  pagination={{
+                    clickable: true,
+                  }}
+                  modules={[Pagination]}
+                  className="mySwiper"
+                  slidesPerView="auto"
+                  breakpoints={{
+                    0: {
+                      slidesPerView: 1,
+                      spaceBetween: 0,
+                    },
+                    600: {
+                      slidesPerView: 2,
+                    },
+                    900: {
+                      slidesPerView: 3,
+                    },
+                    1080: {
+                      slidesPerView: 4,
+                    },
+                  }}
+                >
+                  {movieCredits.cast.map((item) => (
+                    <SwiperSlide key={item.id} className="swiper-slide">
+                      <img src={getImages(item.profile_path)} alt={item.name} />
+                      <p>{item.name}</p>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               </div>
             </Info>
           </Container>
@@ -105,11 +112,7 @@ export function Detail() {
               ))}
           </ContainerMovies>
           {movieSimilar && (
-            <Slider
-              info={movieSimilar}
-              title={"Filmes similares"}
-              slidesPerView={5}
-            ></Slider>
+            <Slider info={movieSimilar} title={"Filmes similares"}></Slider>
           )}
         </>
       ) : (

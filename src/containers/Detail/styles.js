@@ -4,9 +4,15 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  width: 100%;
   height: 100%;
   margin-top: -100px;
   gap: 25px;
+  padding: 0 2rem;
+
+  @media (max-width: 600px) {
+    gap: 0;
+  }
 `;
 
 export const Background = styled.div`
@@ -28,37 +34,20 @@ export const Background = styled.div`
   }
 `;
 
-export const Cover = styled.div`
-  padding: 20px;
-  display: flex;
-  align-items: flex-start;
-  height: 100%;
-  z-index: 98;
-
-  img {
-    width: 425px;
-    border-radius: 12px;
-
-    @media (max-width: 1536px) {
-      width: 300px;
-    }
-
-    @media (max-width: 1280px) {
-      display: none;
-    }
-  }
-`;
-
 export const Info = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 30px;
   z-index: 98;
+  width: 100%;
 
   .info-txt {
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    max-width: 1000px;
 
     h2 {
       font-size: 2rem;
@@ -85,7 +74,6 @@ export const Info = styled.div`
         font-size: 1rem;
         color: rgba(256, 256, 256, 0.9);
         margin-top: 10px;
-        max-width: 900px;
       }
     }
   }
@@ -96,15 +84,14 @@ export const Info = styled.div`
   }
 
   .mySwiper {
-    max-width: 1000px;
+    width: 100%;
+    overflow: hidden;
   }
 
   .swiper-slide {
     margin-right: 0;
-    width: 200px;
-  }
-
-  .card-container {
+    height: auto;
+    width: auto;
     text-align: center;
 
     p {
@@ -116,6 +103,7 @@ export const Info = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-width: 1000px;
 
     h3 {
       font-size: 1.5rem;
