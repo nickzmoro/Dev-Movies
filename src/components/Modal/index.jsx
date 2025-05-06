@@ -24,7 +24,7 @@ const Modal = ({ movieId, setShowModal }) => {
           <IoClose size={30} />
         </button>
       </div>
-      {movie && (
+      {movie ? (
         <Container>
           <iframe
             src={getVideos(movie.key)}
@@ -33,6 +33,10 @@ const Modal = ({ movieId, setShowModal }) => {
             width="100%"
             allowFullScreen
           ></iframe>
+        </Container>
+      ) : (
+        <Container>
+          <h3>O vídeo está indisponível, pois não foi fornecido pela API.</h3>
         </Container>
       )}
     </Background>
