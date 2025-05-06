@@ -38,6 +38,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 99;
+  padding: 0 1rem;
 
   h2 {
     font-size: 2.5rem;
@@ -69,6 +70,10 @@ export const Container = styled.div`
   img {
     width: 300px;
     border-radius: 12px;
+
+    @media (max-width: 900px) {
+      display: none;
+    }
   }
 
   .details {
