@@ -1,5 +1,9 @@
 import { HeaderBox, NavList, List, MobileMenu } from "./styles.js";
 import { HiUser, HiOutlineMenuAlt3 } from "react-icons/hi";
+import { IoClose } from "react-icons/io5";
+import { IoHomeSharp } from "react-icons/io5";
+import { TbMovie } from "react-icons/tb";
+import { BiSolidCameraMovie } from "react-icons/bi";
 import { Link, useLocation } from "react-router-dom";
 
 import { useState } from "react";
@@ -52,29 +56,36 @@ export function Header() {
           <HiOutlineMenuAlt3 size={30} />
         </button>
         {showMobileMenu && (
-          <>
+          <div className="menu-mobile-container">
             <div>
               <button
                 className="btn-menu-close"
                 onClick={() => setShowMobileMenu(false)}
               >
-                Close
+                <IoClose size={30} />
               </button>
             </div>
-            <div className="menu-mobile">
+            <nav className="menu-mobile-links">
               <ul>
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link to="/" onClick={() => setShowMobileMenu(false)}>
+                    <IoHomeSharp /> Home
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/filmes">Filmes</Link>
+                  <Link to="/filmes" onClick={() => setShowMobileMenu(false)}>
+                    <TbMovie /> Filmes
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/series">Séries</Link>
+                  <Link to="/series" onClick={() => setShowMobileMenu(false)}>
+                    <BiSolidCameraMovie />
+                    Séries
+                  </Link>
                 </li>
               </ul>
-            </div>
-          </>
+            </nav>
+          </div>
         )}
       </MobileMenu>
     </HeaderBox>

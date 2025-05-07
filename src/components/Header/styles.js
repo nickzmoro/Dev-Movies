@@ -117,6 +117,10 @@ export const List = styled.li`
 export const MobileMenu = styled.div`
   display: none;
 
+  @media (max-width: 845px) {
+    display: block;
+  }
+
   .line-menu {
     width: 30px;
     height: 2px;
@@ -125,12 +129,74 @@ export const MobileMenu = styled.div`
   }
 
   .btn-menu-open {
+    display: none;
     border: none;
     background-color: transparent;
     cursor: pointer;
+
+    @media (max-width: 845px) {
+      display: block;
+    }
   }
 
-  @media (max-width: 845px) {
-    display: block;
+  .menu-mobile-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+
+    .btn-menu-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: transparent;
+      border: none;
+      display: flex;
+      border-radius: 5px;
+      transition: 0.2s ease;
+
+      &:hover {
+        background-color: rgb(256, 0, 0);
+      }
+    }
+
+    .menu-mobile-links {
+      padding: 6rem 3rem;
+      height: 100%;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+
+        li {
+          padding: 1rem 1rem;
+          border-radius: 12px;
+          transition: 0.2s ease;
+
+          &:hover {
+            background-color: rgba(256, 0, 0, 0.3);
+          }
+
+          a {
+            cursor: pointer;
+            color: rgba(256, 256, 256, 0.9);
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+
+            &:hover {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
   }
 `;
